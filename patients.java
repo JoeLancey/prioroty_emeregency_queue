@@ -1,47 +1,46 @@
 package queue;
 
-class Patient implements Comparable<Patient> {
+public class patients implements Comparable<patients> {
+    private String name;
+    private int priority;
+    private String condition;
+    private String arrivalTime;
 
-	    private String name;
-	    private int priority;
-	    private String condition;
-	    private String arrivalTime;
+    public patients(String name, int priority, String condition, String arrivalTime) {
+        this.name = name;
+        this.priority = priority;
+        this.condition = condition;
+        this.arrivalTime = arrivalTime;
+    }
 
-	    public Patient(String name, int priority, String condition, String arrivalTime) {
-	        this.name = name;
-	        this.priority = priority;
-	        this.condition = condition;
-	        this.arrivalTime = arrivalTime;
-	    }
+    public int getPriority() {
+        return priority;
+    }
 
-	    public int getPriority() {
-	        return priority;
-	    }
+    public String getArrivalTime() {
+        return arrivalTime;
+    }
 
-	    public String getArrivalTime() {
-	        return arrivalTime;
-	    }
+    public String getName() {
+        return name;
+    }
 
-	    public String getName() {
-	        return name;
-	    }
+    public String getCondition() {
+        return condition;
+    }
 
-	    public String getCondition() {
-	        return condition;
-	    }
+    @Override
+    public int compareTo(patients other) {
+       
+        if (this.priority != other.priority) {
+            return Integer.compare(this.priority, other.priority);
+        }
+   
+        return this.arrivalTime.compareTo(other.arrivalTime);
+    }
 
-	    @Override
-	    public int compareTo(Patient other) {
-	   
-	        if (this.priority != other.priority) {
-	            return Integer.compare(this.priority, other.priority);
-	        }
-	        return this.arrivalTime.compareTo(other.arrivalTime);
-	    }
-
-	    @Override
-	    public String toString() {
-	        return "[P" + priority + "] " + name + " - " + condition + " (" + arrivalTime + ")";
-	    }
-	
+    @Override
+    public String toString() {
+        return "[P" + priority + "] " + name + " - " + condition + " (" + arrivalTime + ")";
+    }
 }
